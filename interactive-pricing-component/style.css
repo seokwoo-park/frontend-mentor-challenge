@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-family: "Manrope", sans-serif;
+  color: #858fad;
+  z-index: 1;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fafbff;
+  position: relative;
+  overflow-x: hidden;
+}
+.container img:first-child {
+  width: 100vw;
+  height: 50vh;
+  z-index: -2;
+}
+.container img:nth-child(2) {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 5%;
+  margin: 0 auto;
+}
+.container .content__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1em;
+}
+.container .content__container .cta__container {
+  position: absolute;
+  padding: inherit;
+  top: 15%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  z-index: 1;
+}
+.container .content__container .cta__container p {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #293356;
+}
+.container .content__container .pricing__container {
+  position: absolute;
+  padding: inherit;
+  top: 30%;
+  width: 40%;
+  height: 60%;
+  background-color: skyblue;
+  border-radius: 15px;
+}
+.container .content__container .pricing__container .pageviews__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .content__container .pricing__container .pageviews__container p:first-child {
+  letter-spacing: 0.2rem;
+}
+.container .content__container .pricing__container .pageviews__container p:nth-child(2) {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #293356;
+}
+.container .content__container .pricing__container .pageviews__container p:nth-child(2)::after {
+  content: " / month";
+  color: #858fad;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 370px) and (max-width: 767px) {
+  .container .content__container .pricing__container {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
