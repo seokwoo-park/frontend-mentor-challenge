@@ -6,82 +6,131 @@
   font-size: 15px;
   font-family: "Manrope", sans-serif;
   color: #858fad;
-  z-index: 1;
 }
 
 .container {
   width: 100vw;
   height: 100vh;
-  background-color: #fafbff;
-  position: relative;
   overflow-x: hidden;
+  background-color: #fafbff;
 }
-.container img:first-child {
+.container .img__container {
+  position: relative;
+  width: 100vw;
+  height: 50vh;
+  overflow: hidden;
+}
+.container .img__container img:first-child {
   width: 100vw;
   height: 50vh;
   z-index: -2;
 }
-.container img:nth-child(2) {
+.container .img__container img:nth-child(2) {
   position: absolute;
-  right: 0;
+  top: 10%;
   left: 0;
-  top: 5%;
+  right: 0;
   margin: 0 auto;
 }
-.container .content__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 1em;
-}
-.container .content__container .cta__container {
+.container .text__container {
   position: absolute;
-  padding: inherit;
-  top: 15%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
   text-align: center;
-  z-index: 1;
 }
-.container .content__container .cta__container p {
+.container .text__container p {
+  color: #293356;
   font-size: 1.5rem;
   font-weight: 800;
-  color: #293356;
+  margin-bottom: 0.5em;
 }
-.container .content__container .pricing__container {
+.container .content__container {
+  width: 35em;
+  height: 25em;
+  background-color: #fff;
+  padding: 2.5em;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
   position: absolute;
-  padding: inherit;
-  top: 30%;
-  width: 40%;
-  height: 60%;
-  background-color: skyblue;
-  border-radius: 15px;
+  top: 35%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
-.container .content__container .pricing__container .pageviews__container {
+.container .content__container .pageviews__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.container .content__container .pricing__container .pageviews__container p:first-child {
+.container .content__container .pageviews__container .pageviews {
   letter-spacing: 0.2rem;
 }
-.container .content__container .pricing__container .pageviews__container p:nth-child(2) {
+.container .content__container .pageviews__container .pageviews__price {
+  color: #293356;
   font-size: 2rem;
   font-weight: 800;
-  color: #293356;
 }
-.container .content__container .pricing__container .pageviews__container p:nth-child(2)::after {
+.container .content__container .pageviews__container .pageviews__price::after {
   content: " / month";
   color: #858fad;
   font-size: 1rem;
   font-weight: 600;
 }
+.container .content__container .pricing__range {
+  width: 100%;
+  margin: 1.5em 0;
+}
+.container .content__container .billing__container {
+  display: flex;
+  justify-content: center;
+  margin: 1.5em 0;
+  margin-left: 4.5em;
+  gap: 1em;
+}
+.container .content__container .billing__container .billing__discount::after {
+  content: "25% discount";
+  color: #ff8c66;
+  font-size: 0.8em;
+  background-color: #feece7;
+  border-radius: 20px;
+  padding: 0.1em;
+  margin-left: 0.5em;
+}
+.container .content__container .line {
+  margin-left: -2.5em;
+  margin-right: -2.5em;
+}
+.container .content__container .bottom__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3em 0;
+}
+.container .content__container .bottom__container .desc__container p::before {
+  content: url(./images/icon-check.svg);
+  margin-right: 0.5em;
+}
+.container .content__container .bottom__container button {
+  color: #bdccff;
+  background: #293356;
+  border: none;
+  border-radius: 100px;
+  padding: 2em;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
 
-@media screen and (min-width: 370px) and (max-width: 767px) {
-  .container .content__container .pricing__container {
-    width: 100%;
+@media screen and (min-width: 360px) and (max-width: 767px) {
+  .container .text__container span {
+    display: block;
+  }
+  .container .content__container {
+    width: 90%;
   }
 }
 

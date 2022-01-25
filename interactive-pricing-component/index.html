@@ -26,32 +26,33 @@
   </head>
   <body>
     <div class="container">
-      <img src="./images/bg-pattern.svg">
-      <img src="./images/pattern-circles.svg" />
+      <div class="img__container">
+        <img src="./images/bg-pattern.svg">
+        <img src="./images/pattern-circles.svg" />
+      </div>
+
+      <div class="text__container">
+        <p>Simple, traffic-based pricing</p>
+        <span>Sign-up for our 30-day trial.
+        </span>
+        <span>No credit card required.<span/>
+      </div>
 
       <div class="content__container">
-        <div class="cta__container">
-        
-          <p>Simple, traffic-based pricing</p>
-          <span>Sign-up for our 30-day trial.
-            No credit card required.
-          </span>
-        </div>
-        
-        <div class="pricing__container">
           <div class="pageviews__container">
-            <p>100K PAGEVIEWS</p>
-            <p>$16.00</p>
+            <p class="pageviews">100K PAGEVIEWS</p>
+            <p class="pageviews__price">$16.00</p>
           </div>
     
-          <input class="pricing__range" type="range" min="0" max="5" value="2.5" />
+          <input class="pricing__range" type="range" min="1" max="5" value="2.5" />
     
           <div class="billing__container">
             <p>Monthly Billing</p>
             <input type="checkbox"></input>
-            <p>Yearly Billing</p>
+            <p class="billing__discount">Yearly Billing</p>
           </div>
-    
+            <hr class="line"/>
+
           <div class="bottom__container">
             <div class="desc__container">
               <p>Unlimited websites</p>
@@ -60,8 +61,8 @@
             </div>
             <button>Start my trial</button>
           </div>
+    
         </div>
-      </div>
     </div>
 
 
