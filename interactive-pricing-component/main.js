@@ -3,45 +3,68 @@ const price = document.querySelector(".pageviews__price");
 const range = document.querySelector(".price__range");
 const checkbox = document.querySelector(".checkbox");
 
+let range_value = range.value;
+
+const priceList = [
+  {
+    monthlyPV: "10K",
+    monthlyPrice: 8,
+  },
+  {
+    monthlyPV: "50K",
+    monthlyPrice: 12,
+  },
+  {
+    monthlyPV: "100K",
+    monthlyPrice: 16,
+  },
+  {
+    monthlyPV: "500K",
+    monthlyPrice: 24,
+  },
+  {
+    monthlyPV: "1M",
+    monthlyPrice: 36,
+  },
+];
+
+let { monthlyPV, monthlyPrice } = priceList[range_value - 1];
+
 checkbox.addEventListener("click", (e) => {
   if (checkbox.classList.contains("yearly")) {
     checkbox.classList.remove("yearly");
-  } else checkbox.classList.add("yearly");
+    priceInnerText(monthlyPrice);
+  } else {
+    checkbox.classList.add("yearly");
+    priceInnerText(ConvertPrice());
+  }
 });
 
 range.addEventListener("input", (e) => {
-  let currentValue = e.target.value;
+  range_value = e.target.value;
+  monthlyPV = priceList[range_value - 1].monthlyPV;
+  monthlyPrice = priceList[range_value - 1].monthlyPrice;
 
-  switch (currentValue) {
-    case "1":
-      changePrice("10K", 8);
-      break;
-    case "2":
-      changePrice("50K", 12);
-      break;
-    case "3":
-      changePrice("100K", 16);
-      break;
-    case "4":
-      changePrice("500K", 24);
-      break;
-    case "5":
-      changePrice("1M", 36);
-      break;
-  }
+  changeBilling(monthlyPV, monthlyPrice);
 });
 
-function priceChanger() {}
+function ConvertPrice() {
+  return monthlyPrice * 12 * 0.75;
+}
 
-function yearlyPrice(price) {
+function changeBilling(views, price) {
   if (checkbox.classList.contains("yearly")) {
-    return price * 12 * 0.75;
+    pageviewsInnerText(views);
+    priceInnerText(ConvertPrice());
   } else {
-    return price;
+    pageviewsInnerText(views);
+    priceInnerText(price);
   }
 }
 
-function changePrice(views, prices) {
+function priceInnerText(prices) {
+  price.innerHTML = `$${prices}.00`;
+}
+function pageviewsInnerText(views) {
   pageviews.innerHTML = `${views} PAGEVIEWS`;
-  price.innerHTML = `$${yearlyPrice(prices)}.00`;
 }

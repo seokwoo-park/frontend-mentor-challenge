@@ -176,11 +176,46 @@
 }
 
 @media screen and (min-width: 360px) and (max-width: 767px) {
+  .container {
+    overflow-x: hidden;
+  }
   .container .text__container span {
     display: block;
   }
   .container .content__container {
+    top: 30%;
     width: 90%;
+    height: 65vh;
+    padding: 1.5em;
+  }
+  .container .content__container .pageviews__container {
+    display: block;
+    text-align: center;
+  }
+  .container .content__container .pageviews__container .pageviews__price {
+    font-size: 2.5rem;
+    margin: 0.5em 0;
+  }
+  .container .content__container input[type=range] {
+    order: 3;
+  }
+  .container .content__container .billing__container {
+    margin-left: 0;
+  }
+  .container .content__container .billing__container p {
+    font-size: 0.9rem;
+  }
+  .container .content__container .billing__container .billing__discount::after {
+    content: " -25%";
+  }
+  .container .content__container .bottom__container {
+    flex-direction: column;
+    justify-content: center;
+    margin: 1.5em 0;
+    gap: 1em;
+  }
+  .container .content__container .bottom__container button {
+    width: 80%;
   }
 }
 

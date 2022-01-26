@@ -219,110 +219,54 @@ $thumb__behind__color: hsl(174, 77%, 80%);
 
 @media screen and (min-width: 360px) and (max-width: 767px) {
   .container {
+    overflow-x: hidden;
     .text__container {
       span {
         display: block;
       }
     }
     .content__container {
+      top: 30%;
       width: 90%;
+      height: 65vh;
+      padding: 1.5em;
+
+      .pageviews__container {
+        display: block;
+        text-align: center;
+
+        .pageviews__price {
+          font-size: 2.5rem;
+          margin: 0.5em 0;
+        }
+      }
+      //수정요망 순서바꾸기
+      input[type="range"] {
+        order: 3;
+        // margin: 2em 0;
+      }
+
+      .billing__container {
+        margin-left: 0;
+        p {
+          font-size: 0.9rem;
+        }
+
+        .billing__discount {
+          &::after {
+            content: " -25%";
+          }
+        }
+      }
+      .bottom__container {
+        flex-direction: column;
+        justify-content: center;
+        margin: 1.5em 0;
+        gap: 1em;
+        button {
+          width: 80%;
+        }
+      }
     }
   }
 }
-
-// .container {
-//   width: 100vw;
-//   height: 100vh;
-//   background-color: hsl(230, 100%, 99%);
-//   position: relative;
-//   overflow-x: hidden;
-
-//   img {
-//     &:first-child {
-//       width: 100vw;
-//       height: 50vh;
-//       z-index: -2;
-//     }
-
-//     &:nth-child(2) {
-//       position: absolute;
-//       right: 0;
-//       left: 0;
-//       top: 5%;
-//     }
-//   }
-
-//   .content__container {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     text-align: center;
-//     padding: 1em;
-
-//     .cta__container {
-//       position: absolute;
-//       padding: inherit;
-//       top: 15%;
-//       width: 100%;
-//       display: flex;
-//       flex-direction: column;
-//       text-align: center;
-//       z-index: 1;
-//       p {
-//         font-size: 1.5rem;
-//         font-weight: 800;
-//         color: $subColor;
-//       }
-//     }
-
-//     .pricing__container {
-//       position: absolute;
-//       padding: inherit;
-//       top: 30%;
-//       width: 40%;
-//       height: 60%;
-//       background-color: skyblue;
-//       border-radius: 15px;
-
-//       .pageviews__container {
-//         display: flex;
-//         justify-content: space-between;
-//         align-items: center;
-
-//         p {
-//           &:first-child {
-//             letter-spacing: 0.2rem;
-//           }
-//           &:nth-child(2) {
-//             font-size: 2rem;
-//             font-weight: 800;
-//             color: $subColor;
-
-//             &::after {
-//               content: " / month";
-//               color: $mainColor;
-//               font-size: 1rem;
-//               font-weight: 600;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media screen and (min-width: 370px) and (max-width: 767px) {
-//   .container {
-//     .content__container {
-//       .pricing__container {
-//         //       position: absolute;
-//         //       margin: 2em;
-//         //       top: 35%;
-//         width: 100%;
-//         //       height: 55%;
-//         //       background-color: red;
-//         //       z-index: 2;
-//       }
-//     }
-//   }
-// }
