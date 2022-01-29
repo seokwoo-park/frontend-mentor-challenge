@@ -5,6 +5,7 @@ const Content = ({
   searchData: { ip, isp, country, region, city, timezone },
 }) => {
   const location = city + region + country && `${city}, ${region}, ${country}`;
+  const UTCtime = timezone && `UTC ${timezone}`;
 
   return (
     <StyledContent>
@@ -18,7 +19,7 @@ const Content = ({
       </div>
       <div>
         <p>TIMEZONE</p>
-        <h2>{timezone || "-"}</h2>
+        <h2>{UTCtime || "-"}</h2>
       </div>
       <div>
         <p>ISP</p>

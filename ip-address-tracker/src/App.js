@@ -26,9 +26,9 @@ const theme = {
 
 function App() {
   const [searchData, setSearchData] = useState("");
-  const [location, setLocation] = useState([51.505, -0.09]);
-
-  console.log(searchData);
+  const [location, setLocation] = useState([
+    51.11052876352313, 17.031008871564133,
+  ]);
 
   useEffect(() => {
     if (searchData) {
@@ -36,7 +36,6 @@ function App() {
       setLocation([lat, lng]);
     }
   }, [searchData]);
-  console.log(searchData);
 
   return (
     <>

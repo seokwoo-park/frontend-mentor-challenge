@@ -10,30 +10,43 @@ const Header = ({ setSearchData }) => {
 
   const handleEnter = async (e) => {
     if (e.key === "Enter") {
-      await getLocation(inputValue).then(
-        ({
-          data: {
-            ip,
-            isp,
-            location: { country, region, city, timezone, lat, lng },
-          },
-        }) =>
-          setSearchData({ ip, isp, country, region, city, timezone, lat, lng })
-      );
+      await getLocation(inputValue)
+        .then(
+          ({
+            data: {
+              ip,
+              isp,
+              location: { country, region, city, timezone, lat, lng },
+            },
+          }) =>
+            setSearchData({
+              ip,
+              isp,
+              country,
+              region,
+              city,
+              timezone,
+              lat,
+              lng,
+            })
+        )
+        .catch((Error) => alert("Invalid IP Address. Check again"));
       setInputValue("");
     }
   };
 
   const handleButtonClick = async () => {
-    await getLocation(inputValue).then(
-      ({
-        data: {
-          ip,
-          isp,
-          location: { country, region, city, timezone },
-        },
-      }) => setSearchData({ ip, isp, country, region, city, timezone })
-    );
+    await getLocation(inputValue)
+      .then(
+        ({
+          data: {
+            ip,
+            isp,
+            location: { country, region, city, timezone },
+          },
+        }) => setSearchData({ ip, isp, country, region, city, timezone })
+      )
+      .catch((Error) => alert("Invalid IP address. Check again"));
     setInputValue("");
   };
 

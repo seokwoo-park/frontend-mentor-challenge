@@ -15,7 +15,8 @@ const Map = ({ location }) => {
         style={{ width: "100%", height: "100%" }}
         center={location}
         zoom={13}
-        scrollWheelZoom={false}
+        scrollWheelZoom={true}
+        zoomControl={false}
         whenCreated={setMap}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

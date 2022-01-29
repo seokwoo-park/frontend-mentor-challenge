@@ -20,6 +20,13 @@ export const StyledContent = styled.div`
 
   z-index: 999;
 
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    top: 20%;
+    flex-direction: column;
+    height: 40%;
+    padding: 1em;
+  }
+
   div {
     flex: 1;
     border-right: 1px solid ${({ theme }) => theme.color.DarkGray};
@@ -28,6 +35,11 @@ export const StyledContent = styled.div`
     :last-child {
       border-right: none;
     }
+    @media (max-width: ${({ theme }) => theme.media.mobile}) {
+      text-align: center;
+
+      border: none;
+    }
   }
 
   p {
@@ -35,6 +47,9 @@ export const StyledContent = styled.div`
     font-weight: ${({ theme }) => theme.fontWeight.bold};
     letter-spacing: 0.2em;
     font-size: 1rem;
+    @media (max-width: ${({ theme }) => theme.media.mobile}) {
+      font-size: 0.7rem;
+    }
   }
 
   h2 {
@@ -42,5 +57,9 @@ export const StyledContent = styled.div`
     font-weight: ${({ theme }) => theme.fontWeight.bold};
     margin: 0.5em 0;
     font-size: 1.3rem;
+
+    @media (max-width: ${({ theme }) => theme.media.mobile}) {
+      font-size: 1rem;
+    }
   }
 `;

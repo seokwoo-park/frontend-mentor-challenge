@@ -19,9 +19,6 @@ export const StyledHeader = styled.header`
     color: #fff;
     font-size: 2rem;
     font-weight: ${({ theme }) => theme.fontWeight.bold};
-
-    @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    }
   }
 `;
 
