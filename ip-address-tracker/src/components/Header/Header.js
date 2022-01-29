@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react/cjs/react.development";
+import React, { useState } from "react";
 import { StyledHeader, StyledSearchbar } from "./Header.styled";
 import iconPath from "../../assets/images/icon-arrow.svg";
 
