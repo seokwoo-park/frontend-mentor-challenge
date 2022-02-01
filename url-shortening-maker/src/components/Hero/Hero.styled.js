@@ -24,6 +24,7 @@ export const StyledHero = styled.div`
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     width: 100%;
     padding: 1em;
+    margin-bottom: 30%;
 
     overflow-x: hidden;
     flex-direction: column-reverse;

@@ -5,7 +5,7 @@ export const StyledContent = styled.div`
   width: 100vw;
   height: 100%;
   margin-top: 15%;
-  background-color: ${({ theme }) => theme.color.gray};
+  background-color: ${({ theme }) => theme.color.veryDarkBlue};
   text-align: center;
 `;
 
@@ -21,13 +21,23 @@ export const ContentText = styled.div`
     line-height: 1.5em;
     font-weight: 400;
   }
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      width: 100%;
+    }
+  }
 `;
 
 export const CardContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  gap: 2em;
+  gap: 4em;
   width: 100%;
   height: 20em;
 
@@ -40,6 +50,11 @@ export const CardContainer = styled.div`
   div:nth-child(3) {
     align-self: flex-end;
   }
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    flex-direction: column;
+    height: 100%;
+  }
 `;
 
 export const CardLineBreak = styled.hr`
@@ -49,6 +64,15 @@ export const CardLineBreak = styled.hr`
   height: 8px;
   background-color: ${({ theme }) => theme.color.cyan};
   border-style: none;
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    height: 100%;
+    width: 10px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
 `;
 
 export const CardWrapper = styled.div`
@@ -79,6 +103,16 @@ export const CardWrapper = styled.div`
     font-weight: 400;
     line-height: 1.3rem;
   }
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    text-align: center;
+    img {
+      left: 0;
+      right: 0;
+
+      margin: 0 auto;
+    }
+  }
 `;
 
 export const LinkCardWrapper = styled.div`
@@ -93,17 +127,46 @@ export const LinkCardWrapper = styled.div`
 
   h3 {
     font-weight: 400;
-    flex: 2 2 0;
+    flex: 5 5 0;
     text-align: left;
   }
 
   a {
-    flex: 1 1 0;
+    flex: 3 3 0;
     color: ${({ theme }) => theme.color.cyan};
     text-decoration: none;
 
     :hover {
       font-weight: 600;
+    }
+  }
+
+  button {
+    flex: 1 1 0;
+  }
+
+  hr {
+    width: 100%;
+    border-style: none;
+    height: 1px;
+    background-color: ${({ theme }) => theme.color.gray};
+    display: none;
+  }
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    flex-direction: column;
+    padding: 1em;
+    align-items: flex-start;
+    gap: 0.5em;
+
+    h3 {
+      margin: 0;
+      width: 100%;
+      word-break: break-all;
+    }
+
+    hr {
+      display: block;
     }
   }
 `;

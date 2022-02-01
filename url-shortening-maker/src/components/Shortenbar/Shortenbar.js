@@ -48,9 +48,9 @@ const Shortenbar = ({ setShortLink }) => {
         />
         <StyledButton
           onClick={onClickHandle}
-          radius={"10px"}
+          radius={"5px"}
           padding={"0.9rem"}
-          width={"10em"}
+          width={"100%"}
         >
           Shorten It!
         </StyledButton>

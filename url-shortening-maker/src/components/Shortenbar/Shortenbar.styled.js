@@ -22,11 +22,12 @@ export const StyledShortenbar = styled.div`
   }
 
   input {
-    width: 70%;
+    width: 100%;
     height: 2em;
     border-style: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 1.5em;
+    flex: 3 3 0;
 
     :focus {
       outline: none;
@@ -38,6 +39,10 @@ export const StyledShortenbar = styled.div`
     }
   }
 
+  button {
+    flex: 1 1 0;
+  }
+
   label {
     position: absolute;
     bottom: 8%;
@@ -46,5 +51,23 @@ export const StyledShortenbar = styled.div`
     color: ${({ theme }) => theme.color.red};
     font-style: italic;
     font-size: 0.8rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    flex-direction: column;
+    padding: 1em;
+    gap: 2em;
+    top: -140%;
+    input {
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+    }
+
+    label {
+      top: 45%;
+    }
   }
 `;

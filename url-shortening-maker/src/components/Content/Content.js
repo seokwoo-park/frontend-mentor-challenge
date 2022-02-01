@@ -55,6 +55,7 @@ const Content = () => {
         {shortLink.map((item, index) => (
           <LinkCardWrapper key={index}>
             <h3>{item.original_link}</h3>
+            <hr />
             <a href={item.full_short_link} target={"_blank"}>
               {item.full_short_link}
             </a>
@@ -63,6 +64,7 @@ const Content = () => {
               <StyledButton
                 onClick={() => copyClick(item.full_short_link)}
                 radius="5px"
+                width="100%"
                 style={{
                   backgroundColor: theme.color.darkViolet,
                 }}
@@ -72,6 +74,7 @@ const Content = () => {
             ) : (
               <StyledButton
                 onClick={() => copyClick(item.full_short_link)}
+                width="100%"
                 radius="5px"
               >
                 Copy
