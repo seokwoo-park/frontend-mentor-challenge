@@ -5,12 +5,13 @@ import { BurgerIcon, LineBreak, StyledHeader } from "./Header.styled";
 import { StyledBurgerMenu } from "../Reusable/BurgerMenu.styled";
 import { StyledButton } from "../Reusable/Button.styled";
 import { AiOutlineMenu } from "react-icons/ai";
+import { Container } from "..";
 
 const Header = () => {
   const [isMenuOn, setIsMenuOn] = useState(false);
 
   return (
-    <>
+    <Container>
       <StyledHeader>
         <Logo />
         <Nav />
@@ -32,7 +33,7 @@ const Header = () => {
           <StyledButton width={"100%"}>Sign Up</StyledButton>
         </ul>
       </StyledBurgerMenu>
-    </>
+    </Container>
   );
 };
 

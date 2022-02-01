@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components";
-import { Container, Header, Hero } from "./components/index";
+import { Header, Hero, Content } from "./components/index";
 
 function App() {
   const theme = {
@@ -21,10 +21,9 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Container>
-          <Header />
-        </Container>
+        <Header />
         <Hero />
+        <Content />
       </ThemeProvider>
     </>
   );
