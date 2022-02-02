@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTheme } from "styled-components";
 import { Container } from "..";
 import { Wrapper } from "../Container/Wrapper.styled";
+import { StyledBoostCard } from "../CTA/BoostCard.styled";
 import { Shortenbar } from "../index";
 import { StyledButton } from "../Reusable/Button.styled";
 import {
@@ -46,66 +47,73 @@ const Content = () => {
   };
 
   return (
-    <StyledContent>
-      <Container>
-        <Wrapper height="5em">
-          <Shortenbar setShortLink={setShortLink} />
-        </Wrapper>
+    <>
+      <StyledContent>
+        <Container>
+          <Wrapper height="5em">
+            <Shortenbar setShortLink={setShortLink} />
+          </Wrapper>
 
-        {shortLink.map((item, index) => (
-          <LinkCardWrapper key={index}>
-            <h3>{item.original_link}</h3>
-            <hr />
-            <a href={item.full_short_link} target={"_blank"}>
-              {item.full_short_link}
-            </a>
+          {shortLink.map((item, index) => (
+            <LinkCardWrapper key={index}>
+              <h3>{item.original_link}</h3>
+              <hr />
+              <a href={item.full_short_link} target={"_blank"}>
+                {item.full_short_link}
+              </a>
 
-            {item.full_short_link === copiedURL ? (
-              <StyledButton
-                onClick={() => copyClick(item.full_short_link)}
-                radius="5px"
-                width="100%"
-                style={{
-                  backgroundColor: theme.color.darkViolet,
-                }}
-              >
-                Copied !
-              </StyledButton>
-            ) : (
-              <StyledButton
-                onClick={() => copyClick(item.full_short_link)}
-                width="100%"
-                radius="5px"
-              >
-                Copy
-              </StyledButton>
-            )}
-          </LinkCardWrapper>
-        ))}
-
-        <ContentText>
-          <h1>Advanced Statistics</h1>
-          <p>
-            Track how your links are performing across the web with our advanced
-            statistics dashboard.
-          </p>
-        </ContentText>
-
-        <CardContainer>
-          {data.map((data, index) => (
-            <CardWrapper key={index}>
-              <img
-                src={require(`../../assets/images/${data.image}`)}
-                alt={data.header}
-              />
-              <h3>{data.header}</h3>
-              <p>{data.description}</p>
-            </CardWrapper>
+              {item.full_short_link === copiedURL ? (
+                <StyledButton
+                  onClick={() => copyClick(item.full_short_link)}
+                  radius="5px"
+                  width="100%"
+                  style={{
+                    backgroundColor: theme.color.darkViolet,
+                  }}
+                >
+                  Copied !
+                </StyledButton>
+              ) : (
+                <StyledButton
+                  onClick={() => copyClick(item.full_short_link)}
+                  width="100%"
+                  radius="5px"
+                >
+                  Copy
+                </StyledButton>
+              )}
+            </LinkCardWrapper>
           ))}
-          <CardLineBreak />
-        </CardContainer>
-      </Container>
-    </StyledContent>
+
+          <ContentText>
+            <h1>Advanced Statistics</h1>
+            <p>
+              Track how your links are performing across the web with our
+              advanced statistics dashboard.
+            </p>
+          </ContentText>
+
+          <CardContainer>
+            {data.map((data, index) => (
+              <CardWrapper key={index}>
+                <img
+                  src={require(`../../assets/images/${data.image}`)}
+                  alt={data.header}
+                />
+                <h3>{data.header}</h3>
+                <p>{data.description}</p>
+              </CardWrapper>
+            ))}
+            <CardLineBreak />
+          </CardContainer>
+        </Container>
+      </StyledContent>
+
+      <StyledBoostCard>
+        <h3>Boost your link today</h3>
+        <StyledButton>Get Started</StyledButton>
+      </StyledBoostCard>
+    </>
   );
 };
 

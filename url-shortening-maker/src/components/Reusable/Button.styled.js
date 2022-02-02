@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
-  width: ${({ width }) => width || "auto"};
+  width: ${({ width }) => width || "fit-content"};
   background-color: ${({ bgColor, theme }) =>
     bgColor ? bgColor : theme.color.cyan};
   border-radius: ${({ radius }) => (radius ? radius : "20px")};

@@ -19,12 +19,12 @@ export const LineBreak = styled.hr`
 
 export const BurgerIcon = styled.div`
   display: none;
+  width: fit-content;
+  color: ${({ theme }) => theme.color.grayishViolet};
 
   transform: scale(1.5);
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     display: block;
-
-    color: ${({ theme }) => theme.color.grayishViolet};
   }
 `;
