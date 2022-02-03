@@ -1,11 +1,21 @@
+import { useState } from "react";
 import { ThemeProvider } from "styled-components";
+import { Header } from "./components/index";
+import { Container } from "./components/Reusable/Container.styled";
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
+
+  console.log("Is DarkMode ? " + darkMode);
+
   const theme = {
     fontWeight: {
       small: "300",
       medium: "600",
       large: "800",
+    },
+    media: {
+      mobile: "420px",
     },
     color: {
       // Light Mode Text
@@ -25,9 +35,10 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <h1>Hello world</h1>
-      </div>
+      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Container padding={"2% 5%"}>
+        <h1>Hello World</h1>
+      </Container>
     </ThemeProvider>
   );
 }

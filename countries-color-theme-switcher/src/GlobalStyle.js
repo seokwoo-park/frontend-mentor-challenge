@@ -13,6 +13,7 @@ ${normalize}
         box-sizing: border-box;
         font-family: 'Nunito Sans', sans-serif;
         font-size: 14px;
+        overflow-x: hidden;
     }
     
 
