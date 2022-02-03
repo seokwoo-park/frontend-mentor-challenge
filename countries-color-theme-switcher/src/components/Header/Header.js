@@ -1,6 +1,6 @@
 import React from "react";
-import { DarkMode__Wrapper, StyledHeader } from "./Header.styled";
-import { BsMoon, BsMoonFill } from "react-icons/bs";
+import { DarkMode, StyledHeader } from "./Header.styled";
+import { BsSunFill, BsMoonFill } from "react-icons/bs";
 
 const Header = ({ darkMode, setDarkMode }) => {
   const darkModeClick = () => {
@@ -11,10 +11,10 @@ const Header = ({ darkMode, setDarkMode }) => {
     <StyledHeader darkMode={darkMode}>
       <h1> Where in the world?</h1>
 
-      <DarkMode__Wrapper onClick={darkModeClick} darkMode={darkMode}>
-        <i>{darkMode ? <BsMoonFill /> : <BsMoon />}</i>
-        <p>Dark Mode</p>
-      </DarkMode__Wrapper>
+      <DarkMode onClick={darkModeClick} darkMode={darkMode}>
+        <i>{darkMode ? <BsSunFill /> : <BsMoonFill />}</i>
+        <p>{darkMode ? "Light Mode" : "Dark Mode"}</p>
+      </DarkMode>
     </StyledHeader>
   );
 };

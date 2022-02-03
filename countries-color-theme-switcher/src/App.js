@@ -1,10 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { Header } from "./components/index";
-import { Container } from "./components/Reusable/Container.styled";
+import { Header, Home } from "./components/index";
+import { getCountryAll } from "./helpers/getCountryAll";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [allCountry, setAllCountry] = useState("");
+  const [currentCountry, setCurrentCountry] = useState("");
+
+  console.log(allCountry);
+  console.log(currentCountry);
+
+  useEffect(() => {
+    const initData = async () => {
+      const response = await getAllCountry();
+      setAllCountry(response);
+      showRandomCountry(response);
+    };
+
+    initData();
+  }, []);
+
+  const getAllCountry = async () => {
+    const { data } = await getCountryAll();
+    let dataArray = [];
+
+    await data.map(({ name, population, region, capital, flags }) => {
+      dataArray.push({ name, population, region, capital, flags });
+    });
+
+    return dataArray;
+  };
+
+  const showRandomCountry = (array) => {
+    const result = [];
+    for (let i = 0; i < 8; i++) {
+      const randomCountry = array[Math.floor(Math.random() * array.length)];
+      result.push(randomCountry);
+    }
+    setCurrentCountry(result);
+  };
 
   console.log("Is DarkMode ? " + darkMode);
 
@@ -36,9 +71,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Container padding={"2% 5%"}>
-        <h1>Hello World</h1>
-      </Container>
+      <Home darkMode={darkMode} currentCountry={currentCountry} />
     </ThemeProvider>
   );
 }

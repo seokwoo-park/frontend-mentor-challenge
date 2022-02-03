@@ -26,12 +26,18 @@ export const StyledHeader = styled.header`
   }
 `;
 
-export const DarkMode__Wrapper = styled.div`
+export const DarkMode = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5em;
+  padding: 1em;
   cursor: pointer;
+
+  :hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
 
   p {
     font-weight: ${({ theme }) => theme.fontWeight.medium};
