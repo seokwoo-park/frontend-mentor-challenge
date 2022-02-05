@@ -86,3 +86,18 @@ export const TextWrapper = styled.div`
     }
   }
 `;
+
+export const LoadingSpinner = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 30vh;
+
+  h3 {
+    color: ${({ darkMode }) =>
+      darkMode
+        ? ({ theme }) => theme.color.white
+        : ({ theme }) => theme.color.lightModeText};
+  }
+`;

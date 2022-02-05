@@ -4,33 +4,19 @@ import { Header, Home } from "./components/index";
 import { getCountryAll } from "./helpers/getCountryAll";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const [allCountry, setAllCountry] = useState("");
   const [currentCountry, setCurrentCountry] = useState("");
 
-  console.log(allCountry);
-  console.log(currentCountry);
-
   useEffect(() => {
     const initData = async () => {
-      const response = await getAllCountry();
-      setAllCountry(response);
-      showRandomCountry(response);
+      const { data } = await getCountryAll();
+      setAllCountry(data);
+      showRandomCountry(data);
     };
 
     initData();
   }, []);
-
-  const getAllCountry = async () => {
-    const { data } = await getCountryAll();
-    let dataArray = [];
-
-    await data.map(({ name, population, region, capital, flags }) => {
-      dataArray.push({ name, population, region, capital, flags });
-    });
-
-    return dataArray;
-  };
 
   const showRandomCountry = (array) => {
     const result = [];
@@ -40,8 +26,6 @@ function App() {
     }
     setCurrentCountry(result);
   };
-
-  console.log("Is DarkMode ? " + darkMode);
 
   const theme = {
     fontWeight: {
@@ -71,7 +55,12 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Home darkMode={darkMode} currentCountry={currentCountry} />
+      <Home
+        allCountry={allCountry}
+        currentCountry={currentCountry}
+        setCurrentCountry={setCurrentCountry}
+        darkMode={darkMode}
+      />
     </ThemeProvider>
   );
 }

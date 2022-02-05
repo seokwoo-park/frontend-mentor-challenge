@@ -1,15 +1,35 @@
-import React from "react";
-import { BsSearch } from "react-icons/bs";
+import React, { useState } from "react";
+import { BsSearch, BsFillCaretDownFill } from "react-icons/bs";
 import { Container } from "../Reusable/Container.styled";
 import { Content } from "../index";
 import {
   StyledHome,
   SearchContainer,
   SearchBar,
-  SearchOption,
+  RegionSearch,
+  RegionDropDown,
 } from "./Home.styled";
+import { getRegion } from "../../helpers/getRegion";
 
-const Home = ({ darkMode, currentCountry }) => {
+const Home = ({ darkMode, allCountry, currentCountry, setCurrentCountry }) => {
+  const [dropDownOn, setDropDownOn] = useState(false);
+
+  const getRegionData = async (e) => {
+    const region = e.target.innerText.toLowerCase();
+    const { data } = await getRegion(region);
+    setCurrentCountry(data);
+  };
+
+  const getNameSearch = (value) => {
+    const inputValue = value.toLowerCase();
+    if (allCountry) {
+      const result = allCountry.filter(({ name: { common } }) =>
+        common.toLowerCase().includes(inputValue)
+      );
+      setCurrentCountry(result);
+    }
+  };
+
   return (
     <StyledHome darkMode={darkMode}>
       <Container padding={"3% 5%"}>
@@ -18,18 +38,33 @@ const Home = ({ darkMode, currentCountry }) => {
             <i>
               <BsSearch />
             </i>
-            <input type={"text"} placeholder="Search by Name ..." />
+            <input
+              onChange={(e) => getNameSearch(e.target.value)}
+              type={"text"}
+              placeholder="Search by Name ..."
+            />
           </SearchBar>
-          <SearchOption darkMode={darkMode}>
-            <option value="" hidden>
-              Search by Region
-            </option>
-            <option value="1">Africa</option>
-            <option value="2">America</option>
-            <option value="3">Asia</option>
-            <option value="4">Europe</option>
-            <option value="5">Oceania</option>
-          </SearchOption>
+
+          <RegionSearch
+            onClick={() => setDropDownOn((prev) => !prev)}
+            darkMode={darkMode}
+          >
+            <p>Search by Region</p>
+            <i>
+              <BsFillCaretDownFill />
+            </i>
+            <RegionDropDown
+              onClick={getRegionData}
+              dropDownOn={dropDownOn}
+              darkMode={darkMode}
+            >
+              <li>Africa</li>
+              <li>America</li>
+              <li>Asia</li>
+              <li>Europe</li>
+              <li>Oceania</li>
+            </RegionDropDown>
+          </RegionSearch>
         </SearchContainer>
 
         <Content darkMode={darkMode} currentCountry={currentCountry} />

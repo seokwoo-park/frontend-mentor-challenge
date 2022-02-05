@@ -1,5 +1,13 @@
 import React from "react";
-import { CardWrapper, StyledContent, TextWrapper } from "./Content.styled";
+
+import { Oval } from "react-loader-spinner";
+
+import {
+  CardWrapper,
+  LoadingSpinner,
+  StyledContent,
+  TextWrapper,
+} from "./Content.styled";
 
 const Content = ({ currentCountry, darkMode }) => {
   return (
@@ -22,7 +30,16 @@ const Content = ({ currentCountry, darkMode }) => {
           )
         )
       ) : (
-        <h1>Loading</h1>
+        <LoadingSpinner darkMode={darkMode}>
+          <Oval
+            height="100"
+            width="100"
+            color={darkMode ? "white" : "grey"}
+            secondaryColor={darkMode ? "grey" : "blue"}
+            ariaLabel="Loading ..."
+          />
+          <h3>Loading</h3>
+        </LoadingSpinner>
       )}
     </StyledContent>
   );
