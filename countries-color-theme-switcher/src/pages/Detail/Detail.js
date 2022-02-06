@@ -8,10 +8,20 @@ import {
   FlexBox,
 } from "../../components/Reusable/index";
 import { getCountryDetail } from "../../helpers/getCountryDetail";
+import { StyledDetail } from "./Detail.styled";
 
 const Detail = ({ darkMode }) => {
   const { countryID } = useParams();
   const [country, setCountry] = useState("");
+
+  // console.log(Object.values(country.currencies));
+
+  const getCurrencyValue = (object) => {
+    const array = [];
+    Object.values(object).forEach((element) => array.push(element.name));
+
+    return array.join(", ");
+  };
 
   console.log(country);
   useEffect(() => {
@@ -28,52 +38,60 @@ const Detail = ({ darkMode }) => {
       <Container padding={"3% 5%"}>
         <button> Back </button>
         {country ? (
-          <FlexBox justify={"space-between"}>
-            <h1>IMAGE</h1>
-            <div className="CountryDetail">
-              <h1>{country.name.official}</h1>
+          <StyledDetail>
+            <img src={country.flags.svg} alt={country.name.common + "flag"} />
+            <FlexBox column="column" align="flex-start">
+              <h1>{country.name.common}</h1>
 
-              <FlexBox align={"flex-start"} justify={"space-between"}>
+              <FlexBox
+                align={"flex-start"}
+                justify={"space-between"}
+                gap={"10%"}
+                width={"100%"}
+              >
                 <div>
                   <TextDesc>
-                    <span>Native Name: {}</span>
-                    <p>H </p>
+                    <span>Official Name: </span>
+                    <p>{country.name.official} </p>
                   </TextDesc>
                   <TextDesc>
-                    <span>Population:</span>
-                    <p>{}</p>
+                    <span>Population: </span>
+                    <p>{country.population.toLocaleString()}</p>
                   </TextDesc>
                   <TextDesc>
-                    <span>Region:</span>
-                    <p>D</p>
+                    <span>Region: </span>
+                    <p>{country.region}</p>
                   </TextDesc>
                   <TextDesc>
-                    <span>Sub Region:</span>
-                    <p>H</p>
+                    <span>Sub Region: </span>
+                    <p>{country.subregion}</p>
                   </TextDesc>
                   <TextDesc>
-                    <span>Capital:</span>
-                    <p>e</p>
+                    <span>Capital: </span>
+                    <p>{country.capital || "Unknown"}</p>
                   </TextDesc>
                 </div>
 
                 <div>
                   <TextDesc>
-                    <span>Top Level Domain:</span>
-                    <p>E</p>
+                    <span>Top Level Domain: </span>
+                    <p>{country.tld[0]}</p>
                   </TextDesc>
                   <TextDesc>
-                    <span>Currencies:</span>
-                    <p>J</p>
+                    <span>Currencies: </span>
+                    <p>{getCurrencyValue(country.currencies)}</p>
                   </TextDesc>
                   <TextDesc>
-                    <span>Languages:</span>
-                    <p>Y</p>
+                    <span>Languages: </span>
+                    <p>{Object.values(country.languages).join(", ")}</p>
                   </TextDesc>
                 </div>
               </FlexBox>
-            </div>
-          </FlexBox>
+              <TextDesc>
+                <span>Border Countries: </span>
+              </TextDesc>
+            </FlexBox>
+          </StyledDetail>
         ) : (
           <h1> Loading ...</h1>
         )}
