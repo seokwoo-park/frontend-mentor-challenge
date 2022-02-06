@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { BsSearch, BsFillCaretDownFill } from "react-icons/bs";
-import { Container } from "../Reusable/Container.styled";
+import { Container, Background } from "../Reusable/index";
 import { Content } from "../index";
 import {
-  StyledHome,
   SearchContainer,
   SearchBar,
   RegionSearch,
@@ -31,7 +30,7 @@ const Home = ({ darkMode, allCountry, currentCountry, setCurrentCountry }) => {
   };
 
   return (
-    <StyledHome darkMode={darkMode}>
+    <Background darkMode={darkMode}>
       <Container padding={"3% 5%"}>
         <SearchContainer>
           <SearchBar darkMode={darkMode}>
@@ -69,7 +68,7 @@ const Home = ({ darkMode, allCountry, currentCountry, setCurrentCountry }) => {
 
         <Content darkMode={darkMode} currentCountry={currentCountry} />
       </Container>
-    </StyledHome>
+    </Background>
   );
 };
 

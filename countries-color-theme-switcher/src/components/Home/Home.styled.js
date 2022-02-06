@@ -1,13 +1,5 @@
 import styled from "styled-components";
 
-export const StyledHome = styled.div`
-  min-height: 90vh;
-  background-color: ${({ darkMode }) =>
-    darkMode
-      ? ({ theme }) => theme.color.veryDarkBlue
-      : ({ theme }) => theme.color.veryLightGray};
-`;
-
 export const SearchContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -35,6 +27,10 @@ export const SearchBar = styled.div`
     background-color: transparent;
     border-style: none;
     margin-left: 1em;
+    color: ${({ darkMode }) =>
+      darkMode
+        ? ({ theme }) => theme.color.white
+        : ({ theme }) => theme.color.lightModeText};
 
     ::placeholder {
       color: ${({ darkMode }) =>
@@ -44,10 +40,6 @@ export const SearchBar = styled.div`
     }
 
     :focus {
-      color: ${({ darkMode }) =>
-        darkMode
-          ? ({ theme }) => theme.color.white
-          : ({ theme }) => theme.color.lightModeText};
       outline: none;
     }
   }

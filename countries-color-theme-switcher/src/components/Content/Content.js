@@ -1,7 +1,8 @@
 import React from "react";
-
 import { Oval } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 
+import { TextDesc } from "../Reusable/index";
 import {
   CardWrapper,
   LoadingSpinner,
@@ -10,21 +11,39 @@ import {
 } from "./Content.styled";
 
 const Content = ({ currentCountry, darkMode }) => {
+  const navigate = useNavigate();
+
   return (
     <StyledContent>
       {currentCountry ? (
         currentCountry.map(
           (
-            { name: { common }, flags: { svg }, population, region, capital },
+            {
+              name: { common },
+              flags: { svg },
+              population,
+              region,
+              capital,
+              cca3,
+            },
             index
           ) => (
-            <CardWrapper key={index}>
+            <CardWrapper onClick={() => navigate(`detail/${cca3}`)} key={index}>
               <img src={svg} alt={common + " flags"} />
               <TextWrapper darkMode={darkMode}>
                 <h2>{common}</h2>
-                <p> {population.toLocaleString()}</p>
-                <p> {region}</p>
-                <p> {capital ? capital[0] : "Unknown"}</p>
+                <TextDesc>
+                  <span>Population: </span>
+                  <p>{population.toLocaleString()}</p>
+                </TextDesc>
+                <TextDesc>
+                  <span>Region: </span>
+                  <p> {region}</p>
+                </TextDesc>
+                <TextDesc>
+                  <span>Capital: </span>
+                  <p> {capital ? capital[0] : "Unknown"}</p>
+                </TextDesc>
               </TextWrapper>
             </CardWrapper>
           )

@@ -14,7 +14,7 @@ export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 20em;
-  height: 25em;
+  height: 27em;
   margin: 3% 0;
   border-radius: 5px;
   cursor: pointer;
@@ -44,46 +44,14 @@ export const TextWrapper = styled.div`
     darkMode
       ? ({ theme }) => theme.color.darkBlue
       : ({ theme }) => theme.color.white};
+  color: ${({ darkMode }) =>
+    darkMode
+      ? ({ theme }) => theme.color.white
+      : ({ theme }) => theme.color.lightModeText};
 
   h2 {
     font-size: 1.3rem;
     margin-bottom: 1em;
-
-    color: ${({ darkMode }) =>
-      darkMode
-        ? ({ theme }) => theme.color.white
-        : ({ theme }) => theme.color.lightModeText};
-  }
-
-  p {
-    color: ${({ darkMode }) =>
-      darkMode
-        ? ({ theme }) => theme.color.white
-        : ({ theme }) => theme.color.lightModeText};
-
-    margin-bottom: 1em;
-  }
-  p:nth-child(2),
-  p:nth-child(3),
-  p:nth-child(4) {
-    ::before {
-      font-weight: ${({ theme }) => theme.fontWeight.medium};
-    }
-  }
-  p:nth-child(2) {
-    ::before {
-      content: "Population: ";
-    }
-  }
-  p:nth-child(3) {
-    ::before {
-      content: "Region: ";
-    }
-  }
-  p:last-child {
-    ::before {
-      content: "Capital: ";
-    }
   }
 `;
 

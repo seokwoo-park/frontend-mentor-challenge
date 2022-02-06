@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { Header, Home } from "./components/index";
 import { getCountryAll } from "./helpers/getCountryAll";
 
+import { Detail } from "./pages";
+
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [allCountry, setAllCountry] = useState("");
   const [currentCountry, setCurrentCountry] = useState("");
 
@@ -55,12 +58,26 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Home
-        allCountry={allCountry}
-        currentCountry={currentCountry}
-        setCurrentCountry={setCurrentCountry}
-        darkMode={darkMode}
-      />
+      <Routes>
+        <Route
+          exact
+          path=""
+          element={
+            <Home
+              allCountry={allCountry}
+              currentCountry={currentCountry}
+              setCurrentCountry={setCurrentCountry}
+              darkMode={darkMode}
+            />
+          }
+        />
+
+        <Route
+          exact
+          path="detail/:countryID"
+          element={<Detail darkMode={darkMode} />}
+        />
+      </Routes>
     </ThemeProvider>
   );
 }
