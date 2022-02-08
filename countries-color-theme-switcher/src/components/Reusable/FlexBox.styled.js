@@ -6,8 +6,13 @@ export const FlexBox = styled.div`
   justify-content: ${({ justify }) => justify || "center"};
   align-items: ${({ align }) => align || "center"};
   gap: ${({ gap }) => gap || "0"};
-  flex: wrap;
+  flex-wrap: wrap;
   width: ${({ width }) => width || "fit-content"};
+  margin: ${({ margin }) => margin || "0"};
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    flex-direction: ${({ mobileFlex }) => mobileFlex || "inherit"};
+  }
 
   > div {
     flex: 1;

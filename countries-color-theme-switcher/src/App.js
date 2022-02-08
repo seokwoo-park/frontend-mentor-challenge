@@ -74,8 +74,8 @@ function App() {
 
         <Route
           exact
-          path="detail/:countryID"
-          element={<Detail darkMode={darkMode} />}
+          path="/detail/:countryID"
+          element={<Detail darkMode={darkMode} allCountry={allCountry} />}
         />
       </Routes>
     </ThemeProvider>

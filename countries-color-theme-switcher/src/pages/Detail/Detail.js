@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { BsArrowLeft } from "react-icons/bs";
 import {
   Container,
   Background,
   TextDesc,
   FlexBox,
+  Button,
 } from "../../components/Reusable/index";
 import { getCountryDetail } from "../../helpers/getCountryDetail";
 import { StyledDetail } from "./Detail.styled";
 
-const Detail = ({ darkMode }) => {
+const Detail = ({ darkMode, allCountry }) => {
   const { countryID } = useParams();
   const [country, setCountry] = useState("");
+  const [borderCountry, setBorderCountry] = useState("");
 
-  // console.log(Object.values(country.currencies));
+  const navigate = useNavigate();
 
   const getCurrencyValue = (object) => {
     const array = [];
@@ -23,7 +25,6 @@ const Detail = ({ darkMode }) => {
     return array.join(", ");
   };
 
-  console.log(country);
   useEffect(() => {
     const fetchDetail = async () => {
       const { data } = await getCountryDetail(countryID);
@@ -31,23 +32,53 @@ const Detail = ({ darkMode }) => {
     };
 
     fetchDetail();
-  }, []);
+  }, [countryID]);
+
+  useEffect(() => {
+    if (allCountry && country) getBorderData();
+  }, [country, allCountry]);
+
+  const getBorderData = () => {
+    let array = [];
+
+    if (country.borders) {
+      country.borders.map((item) => {
+        array.push(allCountry.find((element) => element.cca3 === item));
+      });
+      setBorderCountry(array);
+    } else {
+      return null;
+    }
+  };
 
   return (
     <Background darkMode={darkMode}>
       <Container padding={"3% 5%"}>
-        <button> Back </button>
+        <Button
+          onClick={() => navigate("/")}
+          darkMode={darkMode}
+          margin={"3em 0"}
+        >
+          <FlexBox gap={"0.5em"}>
+            <i>
+              <BsArrowLeft />
+            </i>
+            Back
+          </FlexBox>
+        </Button>
+
         {country ? (
-          <StyledDetail>
+          <StyledDetail darkMode={darkMode}>
             <img src={country.flags.svg} alt={country.name.common + "flag"} />
-            <FlexBox column="column" align="flex-start">
+            <FlexBox column="column" align="flex-start" mobileFlex={"column"}>
               <h1>{country.name.common}</h1>
 
               <FlexBox
                 align={"flex-start"}
                 justify={"space-between"}
-                gap={"10%"}
+                gap={"2em"}
                 width={"100%"}
+                // mobileFlex={"column"}
               >
                 <div>
                   <TextDesc>
@@ -75,7 +106,7 @@ const Detail = ({ darkMode }) => {
                 <div>
                   <TextDesc>
                     <span>Top Level Domain: </span>
-                    <p>{country.tld[0]}</p>
+                    <p>{country.tld[0] || "Unknown"}</p>
                   </TextDesc>
                   <TextDesc>
                     <span>Currencies: </span>
@@ -88,7 +119,24 @@ const Detail = ({ darkMode }) => {
                 </div>
               </FlexBox>
               <TextDesc>
-                <span>Border Countries: </span>
+                <FlexBox gap={"0.5em"} margin={"2em"}>
+                  <span>Border Countries: </span>
+                  {borderCountry ? (
+                    borderCountry.map((item, index) => (
+                      <Button
+                        darkMode={darkMode}
+                        key={index}
+                        onClick={() => navigate(`/detail/${item.cca3}`)}
+                      >
+                        {item.name.common}
+                      </Button>
+                    ))
+                  ) : (
+                    <Button onClick={() => navigate("/")} darkMode={darkMode}>
+                      No border country around
+                    </Button>
+                  )}
+                </FlexBox>
               </TextDesc>
             </FlexBox>
           </StyledDetail>

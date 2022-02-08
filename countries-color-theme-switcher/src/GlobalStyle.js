@@ -19,6 +19,7 @@ ${normalize}
         font-family: 'Nunito Sans', sans-serif;
         font-size: 14px;
         overflow-x: hidden;
+        line-height : 1.5;
     }
     
 
